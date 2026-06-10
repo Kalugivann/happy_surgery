@@ -131,24 +131,49 @@
   }
   .hero-title {
     font-family: 'Playfair Display', Georgia, serif;
-    font-size: clamp(52px, 6vw, 88px);
+    font-size: clamp(40px, 5vw, 72px);
     font-weight: 900;
-    line-height: .95;
+    line-height: .98;
     letter-spacing: -.02em;
     color: var(--black);
-    margin-bottom: 28px;
+    margin-bottom: 24px;
   }
   .hero-sub {
     font-size: 15px;
     color: var(--muted);
-    max-width: 340px;
+    max-width: 380px;
     line-height: 1.7;
-    margin-bottom: 40px;
+    margin-bottom: 24px;
   }
   .hero-actions {
     display: flex;
     align-items: center;
     gap: 20px;
+  }
+  .hero-checklist {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 32px;
+  }
+  .hero-checklist li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--black);
+    font-weight: 500;
+  }
+  .hero-checklist li::before {
+    content: '✓';
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    background: var(--black);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    flex-shrink: 0;
   }
   .btn-primary {
     font-size: 14px;
@@ -942,12 +967,17 @@
   <div class="hero-vertical-right">ТРИХОЛОГІЯ — ПЕРЕСАДКА ВОЛОССЯ</div>
 
   <div>
-    <div class="hero-label">* Преміальна трихологія · Ужгород</div>
-    <h1 class="hero-title">ПОВЕРНИ<br>СВОЄ<br>ВОЛОССЯ</h1>
-    <p class="hero-sub">Назавжди. Без перуки, без таблеток, без щоденних ритуалів. Методи FUE, FUT, DHI — під медичним контролем.</p>
+    <div class="hero-label">* Преміальна трихологія · Ужгород · 1500+ пацієнтів</div>
+    <h1 class="hero-title">ПОВЕРНИ<br>ГУСТЕ<br>ВОЛОССЯ.<br>НАЗАВЖДИ.</h1>
+    <p class="hero-sub">Без перуки. Без таблеток. Без щоденних ритуалів. FUE/FUT/DHI під медконтролем у клініці європейського рівня.</p>
+    <ul class="hero-checklist">
+      <li>Гарантія приживлення 95%+</li>
+      <li>Результат на все життя після 1 процедури</li>
+      <li>Без шрамів і реабілітації</li>
+    </ul>
     <div class="hero-actions">
-      <a href="#cta" class="btn-primary">Безкоштовна консультація</a>
-      <a href="#cases" class="btn-ghost">Дивитись кейси →</a>
+      <a href="#cta" class="btn-primary">Дізнатись свою ціну за 2 хв</a>
+      <a href="#reviews" class="btn-ghost">★★★★★ 1500+ кейсів до/після</a>
     </div>
   </div>
 
