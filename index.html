@@ -1,3 +1,20 @@
+<!--
+  ══════════════════════════════════════════════════════════════════
+  ⚠️ ЧЕК-ЛИСТ ПЕРЕД ПУБЛІКАЦІЄЮ — замінити плейсхолдери на реальні дані:
+
+  1. ЛІЦЕНЗІЯ МОЗ (.trust-bar) — вставити скан/номер ліцензії з реєстру
+     https://ares.moz.gov.ua. Зараз показано як приклад без номера.
+  2. ЦИФРИ ДОВІРИ ("7 років", "1000+ пацієнтів") — приклад для верстки,
+     замінити на реальні показники клініки (.trust-bar, .hero-label,
+     .hero-stat-card)
+  3. КОМАНДА ЛІКАРІВ (#doctors) — фото, ПІБ, досвід, спеціалізація —
+     повністю вигадані приклади, замінити на реальних лікарів клініки
+  4. ВІДГУКИ (#reviews) — приклади для демонстрації формату блоку,
+     замінити на реальні відгуки з Google Maps / Instagram / Facebook
+  5. ФОТО "ДО/ПІСЛЯ" (.cases) — перевірити, що використані фото —
+     реальні кейси клініки з дозволом пацієнта на публікацію
+  ══════════════════════════════════════════════════════════════════
+-->
 <!DOCTYPE html>
 <html lang="uk">
 <head>
@@ -286,6 +303,44 @@
     margin-bottom: 16px;
   }
 
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--black);
+    padding: 22px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+  }
+  .trust-item svg { flex-shrink: 0; opacity: .85; }
+  .trust-num {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 16px;
+    margin-right: 4px;
+  }
+  .trust-text {
+    font-size: 12px;
+    color: rgba(255,255,255,.7);
+    letter-spacing: .01em;
+  }
+  .trust-divider {
+    width: 0.5px;
+    height: 24px;
+    background: rgba(255,255,255,.15);
+  }
+  @media (max-width: 900px) {
+    .trust-bar { gap: 20px; padding: 18px 24px; }
+    .trust-divider { display: none; }
+  }
+
   /* FEATURES */
   .features {
     padding: 80px 48px;
@@ -406,11 +461,87 @@
   .method-badge {
     display: inline-block;
     margin-top: 16px;
+    margin-right: 8px;
     font-size: 11px;
     padding: 4px 10px;
     background: var(--bg);
     border-radius: 100px;
     color: var(--black);
+  }
+  .method-price {
+    display: inline-block;
+    margin-top: 16px;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 10px;
+    background: var(--black);
+    border-radius: 100px;
+    color: #fff;
+  }
+  .methods-price-note {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 0.5px solid var(--border);
+  }
+
+  /* DOCTORS */
+  .doctors {
+    padding: 100px 48px;
+    background: var(--white);
+    border-top: 0.5px solid var(--border);
+  }
+  .doctors-header {
+    margin-bottom: 48px;
+    max-width: 600px;
+  }
+  .doctors-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3vw, 44px);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -.01em;
+    line-height: 1.05;
+  }
+  .doctors-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .doctor-card {
+    border: 0.5px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    background: var(--bg);
+  }
+  .doctor-photo {
+    height: 220px;
+    background: var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--muted);
+  }
+  .doctor-info { padding: 22px; }
+  .doctor-name {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--black);
+    margin-bottom: 4px;
+  }
+  .doctor-role {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .doctor-bio {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
   }
 
   /* CASES */
@@ -593,6 +724,39 @@
   .obj-item.open .obj-a {
     max-height: 200px;
     padding-top: 14px;
+  }
+
+  /* MID CTA STRIP */
+  .mid-cta {
+    background: var(--white);
+    border-top: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+    padding: 56px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .mid-cta-text {
+    max-width: 480px;
+  }
+  .mid-cta-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(20px, 2.2vw, 28px);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+  .mid-cta-sub {
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .mid-cta-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
   }
 
   /* PROCESS */
@@ -928,15 +1092,41 @@
     .hero, .methods-header, .obj-header, .guarantee-inner, .cta-inner {
       grid-template-columns: 1fr;
     }
-    section, .features, .methods, .cases, .objections, .process, .guarantee, .cta-section, .reviews { padding: 60px 20px; }
+    section, .features, .methods, .cases, .objections, .process, .guarantee, .cta-section, .reviews, .doctors { padding: 60px 20px; }
     .hero { padding: 100px 20px 60px; }
-    .features-grid, .methods-cards, .cases-grid, .reviews-grid { grid-template-columns: 1fr; }
+    .features-grid, .methods-cards, .cases-grid, .reviews-grid, .doctors-grid { grid-template-columns: 1fr; }
     .process-steps { grid-template-columns: 1fr 1fr; gap: 24px; }
     .process-step { border-right: none; border-bottom: 0.5px solid rgba(255,255,255,.12); padding: 0 0 24px; }
     .hero-vertical, .hero-vertical-right { display: none; }
     .guarantee-inner { padding: 32px; }
     .cta-inner { padding: 40px 32px; }
     footer { flex-direction: column; align-items: flex-start; padding: 32px 20px; }
+    .mid-cta { padding: 32px 20px; justify-content: center; text-align: center; }
+    .mid-cta-actions { width: 100%; }
+    .mid-cta-actions .btn-primary { width: 100%; text-align: center; }
+    body { padding-bottom: 76px; }
+  }
+
+  /* STICKY MOBILE CTA */
+  .sticky-cta {
+    display: none;
+  }
+  @media (max-width: 900px) {
+    .sticky-cta {
+      display: block;
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      z-index: 200;
+      background: var(--white);
+      border-top: 0.5px solid var(--border);
+      padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+      box-shadow: 0 -4px 16px rgba(0,0,0,.06);
+    }
+    .sticky-cta a {
+      display: block;
+      text-align: center;
+      width: 100%;
+    }
   }
 </style>
 </head>
@@ -954,6 +1144,7 @@
   </a>
   <ul class="nav-links">
     <li><a href="#methods">Методи</a></li>
+    <li><a href="#doctors">Лікарі</a></li>
     <li><a href="#cases">Результати</a></li>
     <li><a href="#process">Процес</a></li>
     <li><a href="#reviews">Відгуки</a></li>
@@ -967,7 +1158,7 @@
   <div class="hero-vertical-right">ТРИХОЛОГІЯ — ПЕРЕСАДКА ВОЛОССЯ</div>
 
   <div>
-    <div class="hero-label">* Преміальна трихологія · Ужгород · 1500+ пацієнтів</div>
+    <div class="hero-label">* Преміальна трихологія · Ужгород · 7 років досвіду</div>
     <h1 class="hero-title">ПОВЕРНИ<br>ГУСТЕ<br>ВОЛОССЯ.<br>НАЗАВЖДИ.</h1>
     <p class="hero-sub">Без перуки. Без таблеток. Без щоденних ритуалів. FUE/FUT/DHI під медконтролем у клініці європейського рівня.</p>
     <ul class="hero-checklist">
@@ -977,7 +1168,7 @@
     </ul>
     <div class="hero-actions">
       <a href="#cta" class="btn-primary">Дізнатись свою ціну за 2 хв</a>
-      <a href="#reviews" class="btn-ghost">★★★★★ 1500+ кейсів до/після</a>
+      <a href="#reviews" class="btn-ghost">★★★★★ 1000+ пацієнтів</a>
     </div>
   </div>
 
@@ -1004,12 +1195,12 @@
       <div class="hero-stat-label">Результати клініки</div>
       <div class="hero-stat-grid">
         <div>
-          <div class="hero-stat-num">500+</div>
+          <div class="hero-stat-num">1000+</div>
           <div class="hero-stat-sub">пацієнтів</div>
         </div>
         <div>
-          <div class="hero-stat-num">97%</div>
-          <div class="hero-stat-sub">задоволені</div>
+          <div class="hero-stat-num">7</div>
+          <div class="hero-stat-sub">років роботи</div>
         </div>
         <div>
           <div class="hero-stat-num">3</div>
@@ -1019,6 +1210,29 @@
     </div>
   </div>
 </section>
+
+<!-- TRUST-BAR: заповнити реальними даними клініки перед публікацією (див. чек-лист вгорі файлу) -->
+<div class="trust-bar">
+  <div class="trust-item">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M12 2L4 6v6c0 5 3.4 8.7 8 10 4.6-1.3 8-5 8-10V6l-8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+    <span class="trust-text">Ліцензія МОЗ України</span>
+  </div>
+  <div class="trust-divider"></div>
+  <div class="trust-item">
+    <span class="trust-num">7</span>
+    <span class="trust-text">років на ринку Ужгорода</span>
+  </div>
+  <div class="trust-divider"></div>
+  <div class="trust-item">
+    <span class="trust-num">1000+</span>
+    <span class="trust-text">пацієнтів</span>
+  </div>
+  <div class="trust-divider"></div>
+  <div class="trust-item">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M12 3l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 15.4l-4.8 2.5.9-5.4-3.9-3.8 5.4-.8L12 3z"/></svg>
+    <span class="trust-text">Регулярне підвищення кваліфікації лікарів</span>
+  </div>
+</div>
 
 <div class="features">
   <div class="features-grid">
@@ -1055,6 +1269,7 @@
       <div class="method-full">Follicular Unit Extraction</div>
       <p class="method-desc">Витягування фолікулів по одному мікропанчем. Без лінійного шраму, швидке відновлення. Підходить для більшості пацієнтів.</p>
       <span class="method-badge">Відновлення 7-10 днів</span>
+      <span class="method-price">від 30 грн / графт</span>
     </div>
     <div class="method-card">
       <span class="method-tag">Максимум трансплантатів</span>
@@ -1062,6 +1277,7 @@
       <div class="method-full">Follicular Unit Transplantation</div>
       <p class="method-desc">Видалення смужки шкіри з потиличної зони. Дозволяє пересадити більшу кількість фолікулів за одну сесію.</p>
       <span class="method-badge">Для великих зон</span>
+      <span class="method-price">від 30 грн / графт</span>
     </div>
     <div class="method-card">
       <span class="method-tag">Без надрізів</span>
@@ -1069,6 +1285,42 @@
       <div class="method-full">Direct Hair Implantation</div>
       <p class="method-desc">Пряма імплантація спеціальним пером Choi. Максимальна щільність, найприродніший вигляд волосяної лінії.</p>
       <span class="method-badge">Преміум техніка</span>
+      <span class="method-price">від 30 грн / графт</span>
+    </div>
+  </div>
+  <p class="methods-price-note">* Точна ціна залежить від кількості трансплантатів і визначається на безкоштовній консультації. Одна з найнижчих цін на пересадку волосся в Україні.</p>
+</section>
+
+<!-- КОМАНДА: фото, ПІБ, досвід — приклади для формату верстки. Замінити на реальних лікарів клініки перед публікацією -->
+<section class="doctors" id="doctors">
+  <div class="doctors-header">
+    <div class="section-label">Наша команда</div>
+    <h2 class="doctors-title">ЛІКАРІ, ЯКІ<br>ВІДПОВІДАЮТЬ ЗА РЕЗУЛЬТАТ</h2>
+  </div>
+  <div class="doctors-grid">
+    <div class="doctor-card">
+      <div class="doctor-photo">РС</div>
+      <div class="doctor-info">
+        <div class="doctor-name">Ім'я Прізвище, лікар-хірург</div>
+        <div class="doctor-role">Спеціалізація: FUE, DHI</div>
+        <p class="doctor-bio">Досвід у трансплантології волосся, регулярне підвищення кваліфікації на профільних курсах і конференціях.</p>
+      </div>
+    </div>
+    <div class="doctor-card">
+      <div class="doctor-photo">ІП</div>
+      <div class="doctor-info">
+        <div class="doctor-name">Ім'я Прізвище, лікар-трихолог</div>
+        <div class="doctor-role">Діагностика та підбір методу</div>
+        <p class="doctor-bio">Проводить первинну консультацію, трихоскопію та складає індивідуальний план відновлення.</p>
+      </div>
+    </div>
+    <div class="doctor-card">
+      <div class="doctor-photo">ОВ</div>
+      <div class="doctor-info">
+        <div class="doctor-name">Ім'я Прізвище, лікар-хірург</div>
+        <div class="doctor-role">Спеціалізація: FUT</div>
+        <p class="doctor-bio">Веде складні випадки з великою площею облисіння, супроводжує пацієнта на всіх етапах відновлення.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1129,6 +1381,16 @@
     </div>
   </div>
 </section>
+
+<div class="mid-cta">
+  <div class="mid-cta-text">
+    <div class="mid-cta-title">Не знаєте скільки трансплантатів потрібно саме вам?</div>
+    <p class="mid-cta-sub">Надішліть фото зони облисіння — лікар безкоштовно оцінить і підбере метод, без запису на прийом.</p>
+  </div>
+  <div class="mid-cta-actions">
+    <a href="#cta" class="btn-primary">Надіслати фото на оцінку</a>
+  </div>
+</div>
 
 <section class="process" id="process">
   <div class="process-label">Як це відбувається</div>
@@ -1256,6 +1518,7 @@
       <h2 class="reviews-title">ЩО КАЖУТЬ<br>ПІСЛЯ</h2>
     </div>
   </div>
+  <!-- ВІДГУКИ: 6 карток нижче — приклади для демонстрації формату блоку. Замінити на реальні відгуки з Google Maps / Instagram / Facebook перед публікацією -->
   <div class="reviews-grid">
     <div class="review-card">
       <div class="review-stars">
@@ -1293,6 +1556,45 @@
         <div>
           <div class="review-name">Максим П.</div>
           <div class="review-meta">Мукачево · FUE · рік тому</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">
+        <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+      </div>
+      <p class="review-text">"Порівнював з клініками в Туреччині — тут і ціна нижча, і не треба нікуди летіти. Лікар на консультації чесно сказав скільки графтів реально потрібно, без завищення."</p>
+      <div class="review-author">
+        <div class="review-avatar">ДК</div>
+        <div>
+          <div class="review-name">Дмитро К.</div>
+          <div class="review-meta">Ужгород · FUT · 6 місяців тому</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">
+        <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+      </div>
+      <p class="review-text">"Боялась болю найбільше. Все під місцевою анестезією — відчувала тільки перший укол. Набряк минув за тиждень, на роботу вийшла на п'ятий день."</p>
+      <div class="review-author">
+        <div class="review-avatar">НТ</div>
+        <div>
+          <div class="review-name">Наталія Т.</div>
+          <div class="review-meta">Свалява · DHI · 4 місяці тому</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">
+        <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+      </div>
+      <p class="review-text">"Отримав гарантійний сертифікат після операції — це те, чого не було в жодній клініці, куди я звертався раніше. Через рік приживлення навіть краще, ніж обіцяли."</p>
+      <div class="review-author">
+        <div class="review-avatar">ВЛ</div>
+        <div>
+          <div class="review-name">Віктор Л.</div>
+          <div class="review-meta">Ужгород · FUE · рік тому</div>
         </div>
       </div>
     </div>
@@ -1354,5 +1656,11 @@ document.querySelector('.btn-white').addEventListener('click', function() {
   this.style.color = '#fff';
 });
 </script>
+
+<!-- Sticky CTA — видно тільки на мобайлі (H8 з CRO-аудиту) -->
+<div class="sticky-cta">
+  <a href="#cta" class="btn-primary">Записатись на консультацію</a>
+</div>
+
 </body>
 </html>
