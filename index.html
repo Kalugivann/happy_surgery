@@ -978,6 +978,154 @@
     text-align: center;
   }
 
+  /* QUIZ */
+  .quiz-card {
+    background: var(--black);
+    border-radius: 24px;
+    padding: 60px 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .quiz-header { margin-bottom: 36px; }
+  .quiz-header .cta-title { margin-bottom: 24px; }
+  .quiz-progress {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .quiz-progress-bar {
+    flex: 1;
+    height: 3px;
+    background: rgba(255,255,255,.12);
+    border-radius: 100px;
+    overflow: hidden;
+  }
+  .quiz-progress-fill {
+    height: 100%;
+    background: #fff;
+    border-radius: 100px;
+    width: 14.28%;
+    transition: width .35s ease;
+  }
+  .quiz-progress-label {
+    font-size: 11px;
+    color: rgba(255,255,255,.4);
+    white-space: nowrap;
+  }
+  .quiz-body { min-height: 220px; }
+  .quiz-question {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(20px, 2.2vw, 28px);
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 28px;
+    line-height: 1.2;
+  }
+  .quiz-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .quiz-options.single-col { grid-template-columns: 1fr; }
+  .quiz-option {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 20px;
+    border: 0.5px solid rgba(255,255,255,.15);
+    background: rgba(255,255,255,.05);
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all .15s;
+    font-size: 14px;
+    color: #fff;
+  }
+  .quiz-option:hover { border-color: rgba(255,255,255,.4); background: rgba(255,255,255,.08); }
+  .quiz-option.selected { background: #fff; color: var(--black); border-color: #fff; }
+  .quiz-meter { display: flex; gap: 3px; flex-shrink: 0; }
+  .quiz-meter span {
+    width: 4px; height: 18px;
+    border-radius: 2px;
+    background: rgba(255,255,255,.2);
+  }
+  .quiz-option.selected .quiz-meter span { background: rgba(15,15,14,.15); }
+  .quiz-meter span.filled { background: rgba(255,255,255,.85); }
+  .quiz-option.selected .quiz-meter span.filled { background: var(--black); }
+  .quiz-checkbox {
+    width: 20px; height: 20px;
+    border-radius: 6px;
+    border: 0.5px solid rgba(255,255,255,.3);
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px;
+  }
+  .quiz-option.selected .quiz-checkbox { background: var(--black); color: #fff; border-color: var(--black); }
+  .quiz-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 28px;
+  }
+  .quiz-back {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,.4);
+    font-size: 13px;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    padding: 8px 0;
+    visibility: hidden;
+  }
+  .quiz-back:hover { color: #fff; }
+  .quiz-back.visible { visibility: visible; }
+  .quiz-continue {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 14px 32px;
+    background: #fff;
+    color: var(--black);
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: opacity .2s;
+  }
+  .quiz-continue:disabled { opacity: .3; cursor: not-allowed; }
+  .quiz-continue:not(:disabled):hover { opacity: .85; }
+  .quiz-result-box {
+    background: rgba(255,255,255,.06);
+    border: 0.5px solid rgba(255,255,255,.15);
+    border-radius: 16px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+    font-size: 13px;
+    color: rgba(255,255,255,.75);
+    line-height: 1.7;
+  }
+  .quiz-result-box strong { color: #fff; }
+  .quiz-form-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .quiz-dots {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .quiz-dots span {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.15);
+    transition: background .2s;
+  }
+  .quiz-dots span.done { background: rgba(255,255,255,.85); }
+  @media (max-width: 900px) {
+    .quiz-card { padding: 40px 24px 28px; }
+    .quiz-options { grid-template-columns: 1fr; }
+  }
+
   /* REVIEWS */
   .reviews {
     padding: 100px 48px;
@@ -1602,23 +1750,21 @@
 </section>
 
 <section class="cta-section" id="cta">
-  <div class="cta-inner">
-    <div>
-      <div class="cta-label">Перший крок — безкоштовно</div>
-      <h2 class="cta-title">ДІЗНАЙСЯ СКІЛЬКИ<br>ТРАНСПЛАНТАТІВ<br>ТОБІ ПОТРІБНО</h2>
+  <div class="quiz-card">
+    <div class="quiz-header">
+      <div class="cta-label">Перший крок — безкоштовно · 5-7 питань · 1 хвилина</div>
+      <h2 class="cta-title">ДІЗНАЙСЯ СКІЛЬКИ<br>ТРАНСПЛАНТАТІВ ТОБІ ПОТРІБНО</h2>
+      <div class="quiz-progress">
+        <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quizProgressFill"></div></div>
+        <div class="quiz-progress-label"><span id="quizStepLabel">Крок 1 з 7</span></div>
+      </div>
     </div>
-    <div class="cta-form">
-      <input type="text" class="cta-input" placeholder="Ваше ім'я">
-      <input type="tel" class="cta-input" placeholder="Номер телефону">
-      <select class="cta-input" style="cursor:pointer">
-        <option value="" disabled selected>Зручний час для дзвінка</option>
-        <option>Вранці (9:00–12:00)</option>
-        <option>Вдень (12:00–16:00)</option>
-        <option>Ввечері (16:00–19:00)</option>
-      </select>
-      <button class="btn-white">Записатись на консультацію</button>
-      <div class="cta-note">Безкоштовно · Без зобов'язань · Відповідаємо до 2 годин</div>
+    <div class="quiz-body" id="quizBody"></div>
+    <div class="quiz-nav">
+      <button class="quiz-back" id="quizBack" type="button">← Назад</button>
+      <button class="quiz-continue" id="quizContinue" type="button" style="display:none">Далі</button>
     </div>
+    <div class="cta-note">Безкоштовно · Без зобов'язань · Відповідаємо до 2 годин</div>
   </div>
 </section>
 
@@ -1637,24 +1783,212 @@
 </footer>
 
 <script>
+
+const quizSteps = [
+  {
+    id: 'stage',
+    type: 'single',
+    question: 'Оберіть стадію випадіння волосся',
+    options: [
+      { label: 'Легке випадіння', value: 'light', meter: 1 },
+      { label: 'Помірне випадіння', value: 'moderate', meter: 2 },
+      { label: 'Сильне випадіння', value: 'strong', meter: 3 },
+      { label: 'Повне облисіння зони', value: 'full', meter: 4 }
+    ]
+  },
+  {
+    id: 'area',
+    type: 'single',
+    question: 'Де саме проблема найпомітніша?',
+    options: [
+      { label: 'Лінія росту волосся спереду', value: 'hairline' },
+      { label: 'Тім\'я / маківка', value: 'crown' },
+      { label: 'По всій голові рівномірно', value: 'diffuse' }
+    ]
+  },
+  {
+    id: 'duration',
+    type: 'single',
+    question: 'Скільки часу вас це турбує?',
+    options: [
+      { label: 'Менше року', value: 'lt1' },
+      { label: '1–3 роки', value: '1-3' },
+      { label: 'Понад 3 роки', value: '3plus' }
+    ]
+  },
+  {
+    id: 'tried',
+    type: 'multi',
+    question: 'Що вже пробували? (можна кілька)',
+    options: [
+      { label: 'Нічого ще не пробував(ла)', value: 'none' },
+      { label: 'Шампуні та вітаміни', value: 'shampoo' },
+      { label: 'Мезотерапія / PRP', value: 'meso' },
+      { label: 'Міноксидил чи подібні препарати', value: 'minoxidil' }
+    ]
+  },
+  {
+    id: 'age',
+    type: 'single',
+    question: 'Ваш вік',
+    options: [
+      { label: '18–25', value: '18-25' },
+      { label: '26–35', value: '26-35' },
+      { label: '36–45', value: '36-45' },
+      { label: '46+', value: '46plus' }
+    ]
+  },
+  {
+    id: 'priority',
+    type: 'single',
+    question: 'Що для вас найважливіше в результаті?',
+    options: [
+      { label: 'Природний вигляд без слідів', value: 'natural' },
+      { label: 'Максимальна густота', value: 'density' },
+      { label: 'Швидкість відновлення', value: 'speed' },
+      { label: 'Найнижча вартість при хорошій якості', value: 'price' }
+    ]
+  },
+  {
+    id: 'contact',
+    type: 'contact',
+    question: 'Куди надіслати результат і орієнтовну вартість?'
+  }
+];
+
+const quizState = { current: 0, answers: {} };
+const quizBody = document.getElementById('quizBody');
+const quizBack = document.getElementById('quizBack');
+const quizContinue = document.getElementById('quizContinue');
+const quizProgressFill = document.getElementById('quizProgressFill');
+const quizStepLabel = document.getElementById('quizStepLabel');
+
+function meterHTML(level) {
+  let bars = '';
+  for (let i = 1; i <= 4; i++) {
+    bars += '<span class="' + (i <= level ? 'filled' : '') + '"></span>';
+  }
+  return '<div class="quiz-meter">' + bars + '</div>';
+}
+
+function renderQuizStep() {
+  const step = quizSteps[quizState.current];
+  quizProgressFill.style.width = (((quizState.current + 1) / quizSteps.length) * 100) + '%';
+  quizStepLabel.textContent = 'Крок ' + (quizState.current + 1) + ' з ' + quizSteps.length;
+  quizBack.classList.toggle('visible', quizState.current > 0);
+
+  if (step.type === 'single' || step.type === 'multi') {
+    const saved = quizState.answers[step.id] || (step.type === 'multi' ? [] : null);
+    const optsHTML = step.options.map(function(opt) {
+      const isSelected = step.type === 'multi' ? saved.includes(opt.value) : saved === opt.value;
+      const inner = step.type === 'multi'
+        ? '<div class="quiz-checkbox">' + (isSelected ? '✓' : '') + '</div>'
+        : (opt.meter ? meterHTML(opt.meter) : '');
+      return '<div class="quiz-option' + (isSelected ? ' selected' : '') + '" data-value="' + opt.value + '">' + inner + '<span>' + opt.label + '</span></div>';
+    }).join('');
+    quizBody.innerHTML = '<div class="quiz-question">' + step.question + '</div><div class="quiz-options">' + optsHTML + '</div>';
+
+    quizBody.querySelectorAll('.quiz-option').forEach(function(el) {
+      el.addEventListener('click', function() {
+        const val = this.dataset.value;
+        if (step.type === 'single') {
+          quizState.answers[step.id] = val;
+          setTimeout(goNext, 220);
+          quizBody.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+          this.classList.add('selected');
+        } else {
+          const arr = quizState.answers[step.id] || [];
+          const idx = arr.indexOf(val);
+          if (idx > -1) arr.splice(idx, 1); else arr.push(val);
+          quizState.answers[step.id] = arr;
+          this.classList.toggle('selected');
+          quizContinue.disabled = arr.length === 0;
+        }
+      });
+    });
+
+    if (step.type === 'multi') {
+      quizContinue.style.display = 'inline-block';
+      quizContinue.textContent = 'Далі';
+      quizContinue.disabled = saved.length === 0;
+    } else {
+      quizContinue.style.display = 'none';
+    }
+  } else if (step.type === 'contact') {
+    quizBody.innerHTML =
+      '<div class="quiz-question">' + step.question + '</div>' +
+      '<div class="quiz-result-box" id="quizResultBox"></div>' +
+      '<div class="quiz-form-grid">' +
+        '<input type="text" class="cta-input" id="quizName" placeholder="Ваше ім\'я">' +
+        '<input type="tel" class="cta-input" id="quizPhone" placeholder="Номер телефону">' +
+        '<select class="cta-input" id="quizTime" style="cursor:pointer">' +
+          '<option value="" disabled selected>Зручний час для дзвінка</option>' +
+          '<option>Вранці (9:00–12:00)</option>' +
+          '<option>Вдень (12:00–16:00)</option>' +
+          '<option>Ввечері (16:00–19:00)</option>' +
+        '</select>' +
+      '</div>';
+    document.getElementById('quizResultBox').innerHTML = buildSummary();
+    quizContinue.style.display = 'inline-block';
+    quizContinue.disabled = false;
+    quizContinue.textContent = 'Отримати розрахунок вартості';
+  }
+}
+
+function buildSummary() {
+  const a = quizState.answers;
+  const stageMap = { light: 'легке', moderate: 'помірне', strong: 'сильне', full: 'повне облисіння зони' };
+  const priorityMap = { natural: 'природний вигляд без слідів', density: 'максимальну густоту', speed: 'швидке відновлення', price: 'оптимальну вартість' };
+  let text = 'На основі ваших відповідей: <strong>' + (stageMap[a.stage] || '—') + '</strong> випадіння, у пріоритеті — <strong>' + (priorityMap[a.priority] || '—') + '</strong>. ';
+  text += 'Лікар підготує орієнтовну кількість трансплантатів і вартість персонально під ваш випадок — залиште контакти нижче.';
+  return text;
+}
+
+function goNext() {
+  if (quizState.current < quizSteps.length - 1) {
+    quizState.current++;
+    renderQuizStep();
+  }
+}
+function goBack() {
+  if (quizState.current > 0) {
+    quizState.current--;
+    renderQuizStep();
+  }
+}
+
+quizBack.addEventListener('click', goBack);
+quizContinue.addEventListener('click', function() {
+  const step = quizSteps[quizState.current];
+  if (step.type === 'contact') {
+    const name = document.getElementById('quizName').value.trim();
+    const phone = document.getElementById('quizPhone').value.trim();
+    if (!name || !phone) {
+      quizContinue.textContent = 'Заповніть ім\'я та телефон';
+      setTimeout(function() { quizContinue.textContent = 'Отримати розрахунок вартості'; }, 2000);
+      return;
+    }
+    quizState.answers.name = name;
+    quizState.answers.phone = phone;
+    quizBody.innerHTML = '<div class="quiz-question">Дякуємо, ' + name + '!</div>' +
+      '<div class="quiz-result-box">Заявку отримано ✓ Лікар підготує персональний розрахунок і зателефонує вам у обраний час. Зазвичай це займає до 2 годин.</div>';
+    quizContinue.style.display = 'none';
+    quizBack.classList.remove('visible');
+    quizProgressFill.style.width = '100%';
+    quizStepLabel.textContent = 'Готово';
+  } else {
+    goNext();
+  }
+});
+
+renderQuizStep();
+
 function toggleObj(item) {
   const wasOpen = item.classList.contains('open');
   document.querySelectorAll('.obj-item').forEach(i => i.classList.remove('open'));
   if (!wasOpen) item.classList.add('open');
 }
 
-document.querySelector('.btn-white').addEventListener('click', function() {
-  const name = document.querySelectorAll('.cta-input')[0].value.trim();
-  const phone = document.querySelectorAll('.cta-input')[1].value.trim();
-  if (!name || !phone) {
-    this.textContent = 'Заповніть ім\'я та телефон';
-    setTimeout(() => this.textContent = 'Записатись на консультацію', 2000);
-    return;
-  }
-  this.textContent = 'Заявку отримано! Зателефонуємо ✓';
-  this.style.background = '#1D9E75';
-  this.style.color = '#fff';
-});
 </script>
 
 <!-- Sticky CTA — видно тільки на мобайлі (H8 з CRO-аудиту) -->
